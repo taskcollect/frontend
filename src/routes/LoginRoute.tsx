@@ -1,7 +1,7 @@
 import Container from "@mui/material/Container";
 
 import { Grid } from "@mui/material";
-import LoginForm from "../components/LoginForm";
+import LoginForm from "../components/login/LoginForm";
 
 export default function LoginRoute() {
     return (

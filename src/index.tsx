@@ -9,12 +9,17 @@ import { CustomizableThemeProvider } from "./lib/theme";
 import App from "./components/App";
 import { GlobalStore } from "./lib/store";
 
+import DateAdapter from "@mui/lab/AdapterDayjs";
+import { LocalizationProvider } from "@mui/lab";
+
 ReactDOM.render(
     <GlobalStore>
-        <CustomizableThemeProvider>
-            <CssBaseline />
-            <App />
-        </CustomizableThemeProvider>
+        <LocalizationProvider dateAdapter={DateAdapter}>
+            <CustomizableThemeProvider>
+                <CssBaseline />
+                <App />
+            </CustomizableThemeProvider>
+        </LocalizationProvider>
     </GlobalStore>,
     document.querySelector("#root")
 );

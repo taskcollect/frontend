@@ -1,7 +1,15 @@
 import { Container, Grid, Typography } from "@mui/material";
-import React from "react";
+import React, { useContext } from "react";
+import LessonView from "../components/mainview/lessons/LessonView";
+import { GlobalContext } from "../lib/store";
+
+import strings from '../lib/strings'
 
 export default function HomeRoute() {
+    const { globalState, dispatch } = useContext(GlobalContext);
+
+    const friendlyUsername = globalState.creds?.username || "unknown"
+
     return (
         <Container maxWidth="md">
             <Grid
@@ -12,13 +20,14 @@ export default function HomeRoute() {
                 spacing={0}
                 padding={2}
             >
-                <Grid item xs={12}>
-                    <Typography variant="h5">
-                        Welcome to Taskcollect!
+                <Grid item xs={12} pb={1}>
+                    <Typography variant="h4">
+                        Hello, {strings.capitalize(friendlyUsername)}.
                     </Typography>
                 </Grid>
-                <Grid item xs={12}>
-                    <Typography variant="h6">You're logged in!</Typography>
+
+                <Grid item xs>
+                    <LessonView />
                 </Grid>
             </Grid>
         </Container>

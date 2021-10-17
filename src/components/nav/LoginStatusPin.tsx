@@ -14,7 +14,7 @@ import {
 
 import SettingsIcon from "@mui/icons-material/Settings";
 import LogoutIcon from "@mui/icons-material/Logout";
-import { GlobalContext } from "../lib/store";
+import { GlobalContext } from "../../lib/store";
 
 export default function LoginStatusPin() {
     // global state

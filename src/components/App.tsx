@@ -15,7 +15,7 @@ import { GlobalContext } from "../lib/store";
 // routes
 import HomeRoute from "../routes/HomeRoute";
 import LoginRoute from "../routes/LoginRoute";
-import NavHeader from "./NavHeader";
+import NavHeader from "./nav/NavHeader";
 import SetupRoute from "../routes/SetupRoute";
 
 export default function App() {

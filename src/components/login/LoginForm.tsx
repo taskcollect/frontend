@@ -14,7 +14,7 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 import { LoadingButton } from "@mui/lab";
-import { GlobalContext } from "../lib/store";
+import { GlobalContext } from "../../lib/store";
 
 enum LoginFormState {
     READY,

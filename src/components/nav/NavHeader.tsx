@@ -14,7 +14,7 @@ import {
     useTheme,
 } from "@mui/material";
 
-import { Link as RouterLink, Redirect } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 
 // import { ReactComponent as TaskcollectIcon } from "../assets/tc_transparent.svg";
 
@@ -23,7 +23,7 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 import React, { useContext, useState } from "react";
 import LoginStatusPin from "./LoginStatusPin";
-import { GlobalContext } from "../lib/store";
+import { GlobalContext } from "../../lib/store";
 
 import LoginIcon from "@mui/icons-material/Login";
 import AddIcon from "@mui/icons-material/Add";
