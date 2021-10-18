@@ -1,14 +1,14 @@
-import { Container, Grid, Typography } from "@mui/material";
+import { Box, Container, Grid, Paper, Typography } from "@mui/material";
 import React, { useContext } from "react";
 import LessonView from "../components/mainview/lessons/LessonView";
 import { GlobalContext } from "../lib/store";
 
-import strings from '../lib/strings'
+import strings from "../lib/strings";
 
 export default function HomeRoute() {
     const { globalState, dispatch } = useContext(GlobalContext);
 
-    const friendlyUsername = globalState.creds?.username || "unknown"
+    const friendlyUsername = globalState.creds?.username || "unknown";
 
     return (
         <Container maxWidth="md">
@@ -27,7 +27,11 @@ export default function HomeRoute() {
                 </Grid>
 
                 <Grid item xs>
-                    <LessonView />
+                    <Paper variant="outlined">
+                        <Box p={2}>
+                            <LessonView />
+                        </Box>
+                    </Paper>
                 </Grid>
             </Grid>
         </Container>

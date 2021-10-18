@@ -1,9 +1,11 @@
 import { DateTimePicker, DesktopDatePicker } from "@mui/lab";
 import {
+    Box,
     Button,
     ButtonGroup,
     Divider,
     Grid,
+    IconButton,
     Paper,
     TextField,
     Typography,
@@ -12,8 +14,13 @@ import { border, borderColor } from "@mui/system";
 import React, { useState } from "react";
 import LessonCard from "./LessonCard";
 
+import RefreshIcon from "@mui/icons-material/Refresh";
+import { useTheme } from "@emotion/react";
+
 export default function LessonView() {
     const [lessonsDate, setLessonsDate] = useState(new Date());
+
+    const theme = useTheme() as any;
 
     function compareDates(a: Date, b: Date): boolean {
         return (
@@ -50,43 +57,50 @@ export default function LessonView() {
         >
             <Grid item xs={12}>
                 {/* <Paper elevation={6}> */}
-                    <Grid
-                        container
-                        direction="row"
-                        alignItems="center"
-                        justifyContent="center"
-                        gap={1}
-                        padding={1}
-                    >
-                        <Grid item>
-                            <Typography color="Caption">
-                                Viewing lessons on
-                            </Typography>
-                        </Grid>
-                        <Grid item>
-                            <DesktopDatePicker
-                                // label="Lessons on"
-                                inputFormat="ddd, MMM DD, YYYY"
-                                value={lessonsDate}
-                                renderInput={(params) => (
-                                    <TextField variant="standard" {...params} />
-                                )}
-                                onChange={handleDateChange}
-                            />
-                        </Grid>
-
-                        {isDateToday ? null : (
-                        <Grid item>
-                            <Button
-                                variant="outlined"
-                                onClick={() => setLessonsDate(new Date())}
-                                size="small"
-                            >
-                                Jump to Today
-                            </Button>
-                        </Grid>
-                    )}
+                <Grid
+                    container
+                    direction="row"
+                    alignItems="center"
+                    // justifyContent="center"
+                    gap={1}
+                    padding={1}
+                >
+                    <Grid item xs={12}>
+                        <Typography variant="h5">Your Lessons</Typography>
                     </Grid>
+                    {/* <Grid item>
+                        <Typography color="Caption">
+                            Viewing lessons on
+                        </Typography>
+                    </Grid> */}
+                    <Grid item>
+                        <DesktopDatePicker
+                            // label="Lessons on"
+                            inputFormat="ddd, MMM DD, YYYY"
+                            value={lessonsDate}
+                            renderInput={(params) => (
+                                <TextField variant="standard" {...params} />
+                            )}
+                            onChange={handleDateChange}
+                        />
+                    </Grid>
+                    <Box style={{ flexGrow: 1 }}></Box>
+                    <Grid item>
+                        <Button
+                            variant="outlined"
+                            onClick={() => setLessonsDate(new Date())}
+                            size="small"
+                            disabled={isDateToday}
+                        >
+                            Jump to Today
+                        </Button>
+                    </Grid>
+                    <Grid item>
+                        <IconButton>
+                            <RefreshIcon />
+                        </IconButton>
+                    </Grid>
+                </Grid>
                 {/* </Paper> */}
             </Grid>
 
