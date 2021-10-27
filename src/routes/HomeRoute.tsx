@@ -20,18 +20,27 @@ export default function HomeRoute() {
             gap={2}
             padding={2}
         >
-            <Grid item xs={12} pb={1}>
+            {/* <Grid item xs={12} pb={1}>
                 <Typography variant="h4">
                     Hello, {strings.capitalize(friendlyUsername)}.
                 </Typography>
-            </Grid>
+            </Grid> */}
 
             <Grid item xs>
-                <Paper variant="outlined">
+                {/* <Paper variant="outlined"> */}
                     <Box p={2}>
                         <LessonView />
                     </Box>
-                </Paper>
+                {/* </Paper> */}
+            </Grid>
+
+
+            <Grid item xs>
+                {/* <Paper variant="outlined"> */}
+                    <Box p={2}>
+                        <TaskView />
+                    </Box>
+                {/* </Paper> */}
             </Grid>
         </Grid>
     );

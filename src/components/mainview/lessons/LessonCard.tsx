@@ -1,5 +1,5 @@
-import { Box, IconButton, Paper, Typography, ButtonBase } from "@mui/material";
-import React from "react";
+import { Box, IconButton, Paper, Typography, ButtonBase, useTheme } from "@mui/material";
+import React, { useContext } from "react";
 
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
@@ -7,18 +7,29 @@ import MathsIcon from "@mui/icons-material/Calculate";
 import { LessonInterface } from "../../../lib/lesson";
 import { date2string } from "../../../lib/date";
 import dayjs from "dayjs";
+import { GlobalContext } from "../../../lib/store";
 
 export default function LessonCard({
     lesson,
-    cbFn,
+    onClick,
 }: {
     lesson: LessonInterface;
-    cbFn: (lesson: LessonInterface) => void;
+    onClick: (lesson: LessonInterface) => void;
 }) {
+    const theme = useTheme();
+    
     return (
         <>
-            <ButtonBase style={{ display: "unset", width: "100%" }} onClick={() => cbFn(lesson)}>
-                <Paper elevation={1}>
+            <ButtonBase
+                style={{ display: "unset", width: "100%" }}
+                onClick={() => onClick(lesson)}
+            >
+                <Paper
+                    elevation={2}
+                    style={{
+                        borderLeft: `5px solid ${theme.palette.primary.main}`,
+                    }}
+                >
                     <Box p={1} style={{ display: "flex" }}>
                         <Box
                             pr={1}

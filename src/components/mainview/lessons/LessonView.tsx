@@ -150,7 +150,7 @@ export default function LessonView() {
                     <Grid item xs={12} key={l.internalID}>
                         <LessonCard
                             lesson={l}
-                            cbFn={(l) => setDialogOpenFor(l)}
+                            onClick={(l) => setDialogOpenFor(l)}
                         />
                     </Grid>
                     {lessonList[i + 1] &&

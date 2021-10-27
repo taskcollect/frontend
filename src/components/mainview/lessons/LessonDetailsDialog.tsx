@@ -37,12 +37,10 @@ export default function LessonDetailsDialog({
 
     const { globalState, dispatch } = useContext(GlobalContext);
 
-    const labelColor = globalState.theme === "dark" ? undefined : "GrayText";
-
     function field(key: any, value: any) {
         return (
             <Grid item xs={12} style={{ display: "flex" }}>
-                <Typography color={labelColor} pr={1}>
+                <Typography color="text.secondary" pr={1}>
                     {key}
                 </Typography>
                 <Typography>
@@ -60,7 +58,7 @@ export default function LessonDetailsDialog({
                 <Grid container direction="row" gap={1} alignItems="center">
                     <Grid item xs={10}>
                         <Typography variant="h5">{data.name}</Typography>
-                        <Typography color={labelColor}>
+                        <Typography color="text.secondary">
                             with <b>{data.teacherName}</b> in{" "}
                             <b>{getRoomCode(data.location)}</b>
                         </Typography>
