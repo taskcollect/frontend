@@ -12,13 +12,14 @@ import { Task, TaskOrigin, TaskSubmissionStatus } from "../../../lib/tasks";
 import dayjs from "dayjs";
 import Backdrop from "@mui/material/Backdrop";
 import TaskDetailsDialog from "./TaskDetailsDialog";
+import GlanceChart, { sampleData } from "../chart/BarChart";
 
 export default function TaskView() {
     const exampleTask: Task = {
         courseId: "12345",
         description: "This is an example task.",
-        setOn: dayjs("Wed Oct 25 2021 22:15:00 GMT+0000"),
-        dueOn: dayjs("Wed Oct 26 2021 23:45:00 GMT+0000"),
+        setOn: dayjs("Wed Nov 10 2021 22:15:00 GMT+0000"),
+        dueOn: dayjs("Wed Nov 15 2021 23:45:00 GMT+0000"),
         internalId: "12345",
         materials: [
             {
@@ -28,18 +29,18 @@ export default function TaskView() {
             {
                 title: "4. Digital Solution Task Sheet",
                 link: "https://docs.google.com/document/d/1CHdn2-BKIHdlMgvElnLxGRUjaxRdhRlqy2rCobYllww/edit",
-            }
+            },
         ],
         name: "Example Task",
         courseName: "Digital Technology",
         submission: {
             internalId: "12345",
             late: true,
-            status: TaskSubmissionStatus.TURNED_IN,
-            userId: "34567"
+            status: TaskSubmissionStatus.PENDING,
+            userId: "34567",
         },
         origin: TaskOrigin.CLASSROOM,
-    }
+    };
 
     const [dialogOpenFor, setDialogOpenFor] = useState(null) as [
         Task | null,
@@ -77,20 +78,36 @@ export default function TaskView() {
             </Grid>
 
             <Grid item xs={12}>
+                <GlanceChart data={sampleData} />
+            </Grid>
+
+            <Grid item xs={12}>
                 <Divider />
             </Grid>
 
             <Grid item xs>
-                <TaskCard data={exampleTask} onClick={(l) => setDialogOpenFor(l)}/>
+                <TaskCard
+                    data={exampleTask}
+                    onClick={(l) => setDialogOpenFor(l)}
+                />
             </Grid>
             <Grid item xs>
-                <TaskCard data={exampleTask} onClick={(l) => setDialogOpenFor(l)}/>
+                <TaskCard
+                    data={exampleTask}
+                    onClick={(l) => setDialogOpenFor(l)}
+                />
             </Grid>
             <Grid item xs>
-                <TaskCard data={exampleTask} onClick={(l) => setDialogOpenFor(l)}/>
+                <TaskCard
+                    data={exampleTask}
+                    onClick={(l) => setDialogOpenFor(l)}
+                />
             </Grid>
             <Grid item xs>
-                <TaskCard data={exampleTask} onClick={(l) => setDialogOpenFor(l)}/>
+                <TaskCard
+                    data={exampleTask}
+                    onClick={(l) => setDialogOpenFor(l)}
+                />
             </Grid>
 
             <Backdrop

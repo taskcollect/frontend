@@ -86,7 +86,13 @@ export default function TaskTimeLeftWidget({ data }: proptypes) {
 
     function timeLeftProgressBar(percent: number) {
         return (
-            <Tooltip title="Hello!" arrow placement="left">
+            <Tooltip
+                title={`About ${
+                    100 - Math.round(percent)
+                }% of your time for this is over.`}
+                arrow
+                // placement="left"
+            >
                 <Box sx={{ position: "relative" }} pt={0.25}>
                     <CircularProgress
                         variant="determinate"
@@ -118,21 +124,20 @@ export default function TaskTimeLeftWidget({ data }: proptypes) {
 
     function widget() {
         return (
-        <Box style={{ display: "flex", alignItems: "center" }} pt={0.5}>
-            {percentTimeLeft < 0 ? (
-                <WarningIcon color={progressBarColor as unknown as any} />
-            ) : (
-                timeLeftProgressBar(percentTimeLeft)
-            )}
-            <Typography pl={1} sx={{ fontSize: 14 }} color={genericColor}>
-                <b>
-                    {`${timeUntilDuedate} ` +
-                        (data.dueOn.isBefore(dayjs()) ? "overdue" : "left")}
-                </b>
-            </Typography>
-        </Box>
-
-        )
+            <Box style={{ display: "flex", alignItems: "center" }} pt={0.5}>
+                {percentTimeLeft < 0 ? (
+                    <WarningIcon color={progressBarColor as unknown as any} />
+                ) : (
+                    timeLeftProgressBar(percentTimeLeft)
+                )}
+                <Typography pl={1} sx={{ fontSize: 14 }} color={genericColor}>
+                    <b>
+                        {`${timeUntilDuedate} ` +
+                            (data.dueOn.isBefore(dayjs()) ? "overdue" : "left")}
+                    </b>
+                </Typography>
+            </Box>
+        );
     }
 
     if (data.submission.status === TaskSubmissionStatus.PENDING) {
@@ -140,15 +145,14 @@ export default function TaskTimeLeftWidget({ data }: proptypes) {
     } else {
         return (
             <Box sx={{ alignItems: "center", display: "flex" }}>
-            <DoneIcon fontSize="small" color={progressBarColor as unknown as any} />
-            <Typography
-                color={genericColor}
-                sx={{ fontSize: 14 }}
-                pl={0.5}
-            >
-                <b>Turned in</b>
-            </Typography>
-        </Box>
-        )
+                <DoneIcon
+                    fontSize="small"
+                    color={progressBarColor as unknown as any}
+                />
+                <Typography color={genericColor} sx={{ fontSize: 14 }} pl={0.5}>
+                    <b>Turned in</b>
+                </Typography>
+            </Box>
+        );
     }
 }

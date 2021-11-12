@@ -1,29 +1,24 @@
 import { Box, Grid } from "@mui/material";
 import React, { useContext } from "react";
+import GlancePanel from "../components/mainview/ataglance/GlancePanel";
 import LessonView from "../components/mainview/lessons/LessonView";
 import MessageView from "../components/mainview/messages/MessageView";
 import TaskView from "../components/mainview/tasks/TaskView";
 import { GlobalContext } from "../lib/store";
 
 export default function HomeRoute() {
-    const { globalState } = useContext(GlobalContext);
-
-    const friendlyUsername = globalState.creds?.username || "unknown";
-
     return (
         <Grid
             container
             direction="row"
             justifyContent="center"
             // alignItems="center"
-            gap={2}
-            padding={2}
+            // gap={0}
+            padding={1}
         >
-            {/* <Grid item xs={12} pb={1}>
-                <Typography variant="h4">
-                    Hello, {strings.capitalize(friendlyUsername)}.
-                </Typography>
-            </Grid> */}
+            <Grid item xs={12} pl={2} pr={2} pt={2}>
+                <GlancePanel />
+            </Grid>
 
             <Grid item xs>
                 <Box p={2}>

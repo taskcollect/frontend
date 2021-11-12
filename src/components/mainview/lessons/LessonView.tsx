@@ -73,7 +73,9 @@ export default function LessonView() {
 
     for (let i = 1; i < 5; i++) {
         let l = { ...exampleLesson };
-        l.start = new Date(lessonList[i - 1].end.getTime() + (i === 3 ? 25 : 5) * 60000);
+        l.start = new Date(
+            lessonList[i - 1].end.getTime() + (i === 3 ? 25 : 5) * 60000
+        );
         l.end = new Date(l.start.getTime() + 80 * 60000);
         console.log(l);
         lessonList.push(l);
@@ -161,7 +163,10 @@ export default function LessonView() {
                             return (
                                 <Grid item xs={12}>
                                     <Divider>
-                                        <Typography color="GrayText" style={{ userSelect: "none" }}>
+                                        <Typography
+                                            color="GrayText"
+                                            style={{ userSelect: "none" }}
+                                        >
                                             {mins} minute break
                                         </Typography>
                                     </Divider>
