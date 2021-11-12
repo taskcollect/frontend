@@ -13,7 +13,7 @@ import {
     Typography,
 } from "@mui/material";
 
-import React, { ReactNode, useContext, useEffect, useState } from "react";
+import React, { ReactNode, useContext, useState } from "react";
 import { SetupContext } from "./SetupForm";
 
 import LoginIcon from "@mui/icons-material/Login";

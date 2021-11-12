@@ -1,23 +1,18 @@
-import { DateTimePicker, DesktopDatePicker } from "@mui/lab";
+import { DesktopDatePicker } from "@mui/lab";
 import {
     Backdrop,
     Box,
     Button,
-    ButtonGroup,
-    CircularProgress,
     Divider,
     Grid,
     IconButton,
-    Paper,
     TextField,
     Typography,
 } from "@mui/material";
-import { border, borderColor } from "@mui/system";
 import React, { Dispatch, SetStateAction, useState } from "react";
 import LessonCard from "./LessonCard";
 
 import RefreshIcon from "@mui/icons-material/Refresh";
-import { useTheme } from "@emotion/react";
 import { LessonInterface, LessonPresenceEnum } from "../../../lib/lesson";
 import LessonDetailsDialog from "./LessonDetailsDialog";
 import dayjs from "dayjs";
@@ -56,7 +51,7 @@ export default function LessonView() {
     const isDateToday = compareDates(new Date(), lessonsDate);
 
     const exampleLesson: LessonInterface = {
-        internalID: "123456",
+        internalId: "123456",
         internalName: "11 Digital Technology 2MA07",
         name: "Digital Technology",
         teacherName: "Nevena SLOAN",
@@ -147,7 +142,7 @@ export default function LessonView() {
 
             {lessonList.map((l, i) => (
                 <>
-                    <Grid item xs={12} key={l.internalID}>
+                    <Grid item xs={12} key={l.internalId}>
                         <LessonCard
                             lesson={l}
                             onClick={(l) => setDialogOpenFor(l)}

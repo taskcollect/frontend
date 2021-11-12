@@ -11,7 +11,6 @@
 //     useTheme,
 // } from "@mui/material";
 
-import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import ButtonBase from "@mui/material/ButtonBase";
 import Card from "@mui/material/Card";
@@ -57,7 +56,7 @@ export default function TaskCard({
     onClick: (task: Task) => void;
 }) {
     const theme = useTheme();
-    const [genericColor, progressBarColor] = getTaskColor(data, theme);
+    const [genericColor] = getTaskColor(data, theme);
 
     return (
         <ButtonBase

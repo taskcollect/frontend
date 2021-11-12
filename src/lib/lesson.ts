@@ -19,7 +19,7 @@ export interface RoomIDInterface {
 
 export interface LessonInterface {
     // DayMap internal ID
-    internalID: string;
+    internalId: string;
     // DayMap raw name
     internalName: string;
     // Formatted name

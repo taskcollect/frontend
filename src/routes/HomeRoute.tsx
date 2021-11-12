@@ -1,13 +1,12 @@
-import { Box, Container, Grid, Paper, Typography } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import React, { useContext } from "react";
 import LessonView from "../components/mainview/lessons/LessonView";
+import MessageView from "../components/mainview/messages/MessageView";
 import TaskView from "../components/mainview/tasks/TaskView";
 import { GlobalContext } from "../lib/store";
 
-import strings from "../lib/strings";
-
 export default function HomeRoute() {
-    const { globalState, dispatch } = useContext(GlobalContext);
+    const { globalState } = useContext(GlobalContext);
 
     const friendlyUsername = globalState.creds?.username || "unknown";
 
@@ -27,20 +26,21 @@ export default function HomeRoute() {
             </Grid> */}
 
             <Grid item xs>
-                {/* <Paper variant="outlined"> */}
-                    <Box p={2}>
-                        <LessonView />
-                    </Box>
-                {/* </Paper> */}
+                <Box p={2}>
+                    <LessonView />
+                </Box>
             </Grid>
 
+            <Grid item xs>
+                <Box p={2}>
+                    <TaskView />
+                </Box>
+            </Grid>
 
             <Grid item xs>
-                {/* <Paper variant="outlined"> */}
-                    <Box p={2}>
-                        <TaskView />
-                    </Box>
-                {/* </Paper> */}
+                <Box p={2}>
+                    <MessageView />
+                </Box>
             </Grid>
         </Grid>
     );

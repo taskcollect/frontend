@@ -1,13 +1,8 @@
-import { Box, IconButton, Paper, Typography, ButtonBase, useTheme } from "@mui/material";
-import React, { useContext } from "react";
-
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import { Box, Paper, Typography, ButtonBase, useTheme } from "@mui/material";
 
 import MathsIcon from "@mui/icons-material/Calculate";
 import { LessonInterface } from "../../../lib/lesson";
-import { date2string } from "../../../lib/date";
 import dayjs from "dayjs";
-import { GlobalContext } from "../../../lib/store";
 
 export default function LessonCard({
     lesson,
@@ -28,6 +23,7 @@ export default function LessonCard({
                     elevation={2}
                     style={{
                         borderLeft: `5px solid ${theme.palette.primary.main}`,
+                        minWidth: 250
                     }}
                 >
                     <Box p={1} style={{ display: "flex" }}>
@@ -46,10 +42,6 @@ export default function LessonCard({
                                 {dayjs(lesson.end).format("hh:mm a")}
                             </Typography>
                         </Box>
-                        {/* <Box style={{ flexGrow: 1 }}></Box>
-                    <IconButton>
-                        <ArrowForwardIosIcon />
-                    </IconButton> */}
                     </Box>
                 </Paper>
             </ButtonBase>

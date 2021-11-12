@@ -24,7 +24,7 @@ interface props {
 }
 
 export function CustomizableThemeProvider({ children }: props) {
-    const [theme, setTheme] = useState(defaultTheme);
+    const [theme] = useState(defaultTheme);
 
     // global state
     const { globalState } = useContext(GlobalContext);

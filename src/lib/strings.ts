@@ -11,4 +11,10 @@ export function padNumber(num: number, size: number): string {
     return s;
 }
 
-export default { capitalize, padNumber };
+export function shorten(input: string, max: number): string {
+    if (input.length <= max) return input;
+    return input.substring(0, max - 3) + "...";
+}
+
+const e = { capitalize, padNumber };
+export default e;

@@ -5,7 +5,6 @@ import {
     FormControlLabel,
     FormGroup,
     Grid,
-    IconButton,
     Tooltip,
     Typography,
 } from "@mui/material";

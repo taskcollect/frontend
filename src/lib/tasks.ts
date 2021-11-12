@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 
 export interface Task {
-    id: string;
+    internalId: string;
     courseId: string;
     name: string;
     courseName?: string | null;
@@ -18,7 +18,7 @@ export enum TaskOrigin {
 }
 
 export interface TaskSubmission {
-    id: string;
+    internalId: string;
     userId: string;
     late: boolean;
     status: TaskSubmissionStatus;

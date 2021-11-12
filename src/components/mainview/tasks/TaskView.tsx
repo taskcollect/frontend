@@ -10,7 +10,6 @@ import RefreshIcon from "@mui/icons-material/Refresh";
 import TaskCard from "./TaskCard";
 import { Task, TaskOrigin, TaskSubmissionStatus } from "../../../lib/tasks";
 import dayjs from "dayjs";
-import LessonDetailsDialog from "../lessons/LessonDetailsDialog";
 import Backdrop from "@mui/material/Backdrop";
 import TaskDetailsDialog from "./TaskDetailsDialog";
 
@@ -20,7 +19,7 @@ export default function TaskView() {
         description: "This is an example task.",
         setOn: dayjs("Wed Oct 25 2021 22:15:00 GMT+0000"),
         dueOn: dayjs("Wed Oct 26 2021 23:45:00 GMT+0000"),
-        id: "12345",
+        internalId: "12345",
         materials: [
             {
                 title: "HPE Safety Assignment - Google Docs",
@@ -34,7 +33,7 @@ export default function TaskView() {
         name: "Example Task",
         courseName: "Digital Technology",
         submission: {
-            id: "12345",
+            internalId: "12345",
             late: true,
             status: TaskSubmissionStatus.TURNED_IN,
             userId: "34567"

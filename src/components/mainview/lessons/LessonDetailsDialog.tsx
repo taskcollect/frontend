@@ -5,25 +5,21 @@ import {
     Typography,
     Divider,
     IconButton,
-    useMediaQuery,
-    useTheme,
     Button,
 } from "@mui/material";
-import React, { useContext } from "react";
 
 import {
     getRoomCode,
     LessonInterface,
-    RoomIDInterface,
     getLessonPresence,
 } from "../../../lib/lesson";
 
 import CloseIcon from "@mui/icons-material/Close";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import dayjs from "dayjs";
-import { GlobalContext } from "../../../lib/store";
 
 import sanitizeHtml from "sanitize-html";
+import { field } from "../../../lib/dialog";
 
 export default function LessonDetailsDialog({
     data,
@@ -32,24 +28,6 @@ export default function LessonDetailsDialog({
     data: LessonInterface | null;
     onClose: () => void;
 }) {
-    const theme = useTheme();
-    const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-
-    const { globalState, dispatch } = useContext(GlobalContext);
-
-    function field(key: any, value: any) {
-        return (
-            <Grid item xs={12} style={{ display: "flex" }}>
-                <Typography color="text.secondary" pr={1}>
-                    {key}
-                </Typography>
-                <Typography>
-                    <b>{value}</b>
-                </Typography>
-            </Grid>
-        );
-    }
-
     if (data == null) return <></>;
 
     return (
