@@ -17,6 +17,7 @@ import HomeRoute from "../routes/HomeRoute";
 import LoginRoute from "../routes/LoginRoute";
 import NavHeader from "./nav/NavHeader";
 import SetupRoute from "../routes/SetupRoute";
+import Calendar from "./calendar/Calendar"
 
 export default function App() {
     const { globalState } = useContext(GlobalContext);
@@ -36,6 +37,13 @@ export default function App() {
                 <Route exact path="/setup">
                     {globalState.creds != null ? (
                         <Redirect to="/" />
+                    ) : (
+                        <SetupRoute />
+                    )}
+                </Route>
+                <Route exact path="/calendar">
+                    {globalState.creds != null ? (
+                        <Calendar/>
                     ) : (
                         <SetupRoute />
                     )}

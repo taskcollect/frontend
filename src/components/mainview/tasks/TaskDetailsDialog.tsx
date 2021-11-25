@@ -8,8 +8,11 @@ import {
     Button,
     Chip,
 } from "@mui/material";
+
 import CloseIcon from "@mui/icons-material/Close";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
+import DoneIcon from '@mui/icons-material/Done';
+
 import { Task, TaskOrigin, TaskSubmissionStatus } from "../../../lib/tasks";
 import TaskTimeLeftWidget from "./TaskTimeLeftWidget";
 
@@ -25,7 +28,7 @@ export default function TaskDetailsDialog({ data, onClose }: proptypes) {
     if (data == null) return <></>;
 
     function getStatusText() {
-        if (data == null) return "???";
+        if (data == null || data.submission == null) return "???";
 
         switch (data.submission.status) {
             case TaskSubmissionStatus.PENDING:
@@ -62,7 +65,7 @@ export default function TaskDetailsDialog({ data, onClose }: proptypes) {
                         <Divider />
                     </Grid>
 
-                    {field("Status", getStatusText())}
+                    {data.submission != null ? field("Status", getStatusText()) : null}
 
                     {field(
                         "Set on",
@@ -72,35 +75,51 @@ export default function TaskDetailsDialog({ data, onClose }: proptypes) {
                         "Due on",
                         data.dueOn.format("ddd D MMM YYYY @ hh:mm A ")
                     )}
-                    <Grid item xs={12}>
-                        <Divider>Materials</Divider>
-                    </Grid>
-                    <Grid item xs={12}>
-                        <Grid container gap={1}>
-                            {data.materials.map((material, idx) => {
-                                return (
-                                    <Grid item>
-                                        <Chip
-                                            icon={<LinkIcon />}
-                                            label={material.title}
-                                            component="a"
-                                            href={material.link}
-                                            variant="outlined"
-                                            clickable
-                                        />
-                                    </Grid>
-                                );
-                            })}
-                        </Grid>
-                    </Grid>
-                    <Grid item>
-                        <Button startIcon={<OpenInNewIcon />}>
-                            Open in{" "}
-                            {data.origin === TaskOrigin.CLASSROOM
-                                ? "Google Classroom"
-                                : "Daymap"}
-                        </Button>
-                    </Grid>
+                    {
+                        data.materials.length > 0 && <>
+                            <Grid item xs={12}>
+                                <Divider>Materials</Divider>
+                            </Grid>
+                            <Grid item xs={12}>
+                                <Grid container gap={1}>
+                                    {data.materials.map((material, idx) => {
+                                        return (
+                                            <Grid item>
+                                                <Chip
+                                                    icon={<LinkIcon />}
+                                                    label={material.title}
+                                                    component="a"
+                                                    href={material.link}
+                                                    variant="outlined"
+                                                    clickable
+                                                />
+                                            </Grid>
+                                        );
+                                    })}
+                                </Grid>
+                            </Grid>
+                        </>
+                    }
+                    {
+                        data.origin !== TaskOrigin.USER 
+                            ? (
+                                <Grid item>
+                                    <Button startIcon={<OpenInNewIcon />}>
+                                        Open in{" "}
+                                        {data.origin === TaskOrigin.CLASSROOM
+                                            ? "Google Classroom"
+                                            : "Daymap"}
+                                    </Button>
+                                </Grid>
+                            )
+                            : (
+                                <Grid item>
+                                    <Button startIcon={<DoneIcon />}>
+                                        Mark as done
+                                    </Button>
+                                </Grid>
+                            )
+                    }
                 </Grid>
             </Box>
         </Paper>

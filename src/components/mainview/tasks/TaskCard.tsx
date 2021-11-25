@@ -27,24 +27,25 @@ import dayjs from "dayjs";
 import TaskTimeLeftWidget from "./TaskTimeLeftWidget";
 
 export function getTaskColor(data: Task, theme: Theme) {
-    switch (data.submission.status) {
-        // case TaskSubmissionStatus.GRADED:
-        //     return [theme.palette.text.secondary, "inherit"];
-        case TaskSubmissionStatus.PENDING:
-            if (data.dueOn.isBefore(dayjs())) {
-                return [theme.palette.error.main, "error"];
-            }
+    if (data.submission == null || data.submission.status === TaskSubmissionStatus.PENDING) {
+        if (data.dueOn.isBefore(dayjs())) {
+            return [theme.palette.error.main, "error"];
+        }
 
-            // if the assignment is due less than a day away, show a warning
-            if (data.dueOn.diff(dayjs(), "day") < 1) {
-                return [theme.palette.warning.main, "warning"];
-            }
+        // if the assignment is due less than a day away, show a warning
+        if (data.dueOn.diff(dayjs(), "day") < 1) {
+            return [theme.palette.warning.main, "warning"];
+        }
 
-            return [theme.palette.primary.main, "primary"];
-
-        case TaskSubmissionStatus.TURNED_IN:
-            return [theme.palette.success.main, "success"];
+        return [theme.palette.primary.main, "primary"];
     }
+
+    // it has been turned in
+    if (data.submission.status === TaskSubmissionStatus.TURNED_IN) {
+        return [theme.palette.success.main, "success"];
+    }
+
+    // don't know
     return [theme.palette.text.secondary, "inherit"];
 }
 

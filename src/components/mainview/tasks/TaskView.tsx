@@ -33,13 +33,15 @@ export default function TaskView() {
         ],
         name: "Example Task",
         courseName: "Digital Technology",
-        submission: {
-            internalId: "12345",
-            late: true,
-            status: TaskSubmissionStatus.PENDING,
-            userId: "34567",
-        },
-        origin: TaskOrigin.CLASSROOM,
+        // submission: {
+        //     internalId: "12345",
+        //     late: true,
+        //     status: TaskSubmissionStatus.PENDING,
+        //     userId: "34567",
+        // },
+        submission: null,
+        origin: TaskOrigin.USER,
+        // origin: TaskOrigin.CLASSROOM,
     };
 
     const [dialogOpenFor, setDialogOpenFor] = useState(null) as [

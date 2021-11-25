@@ -9,12 +9,12 @@ export interface Task {
     setOn: dayjs.Dayjs;
     dueOn: dayjs.Dayjs;
     materials: Material[];
-    submission: TaskSubmission;
+    submission: TaskSubmission | null;
     origin: TaskOrigin;
 }
 
 export enum TaskOrigin {
-    DAYMAP, CLASSROOM
+    DAYMAP, CLASSROOM, USER
 }
 
 export interface TaskSubmission {

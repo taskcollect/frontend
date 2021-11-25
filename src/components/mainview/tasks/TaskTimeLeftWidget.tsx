@@ -62,7 +62,7 @@ export default function TaskTimeLeftWidget({ data }: proptypes) {
 
     useEffect(() => {
         // just don't update anything if the task is not due
-        if (data.submission.status !== TaskSubmissionStatus.PENDING) return;
+        if (data.submission != null && data.submission.status !== TaskSubmissionStatus.PENDING) return;
 
         function calcPercentTimeLeft(): number {
             const totalTime = data.dueOn.diff(data.setOn, "s");
@@ -139,8 +139,8 @@ export default function TaskTimeLeftWidget({ data }: proptypes) {
             </Box>
         );
     }
-
-    if (data.submission.status === TaskSubmissionStatus.PENDING) {
+    
+    if (data.submission == null || data.submission.status === TaskSubmissionStatus.PENDING) {
         return widget();
     } else {
         return (
