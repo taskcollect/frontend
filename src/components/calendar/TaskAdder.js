@@ -104,48 +104,6 @@ const TaskAdder = () => {
                             <Button onClick={handleClose}>Cancel</Button>
                         </Grid>
                     </Grid>
-                    {/* <CardContent>
-                        <h2 style={{textAlign : "center"}}>Add New Task</h2>
-                    </CardContent>
-                    <CardActions>
-                        <TextField 
-                            label="Task Name" 
-                            sx={{width: "90%", margin: "2%"}}
-                        />
-                    </CardActions>
-                    <CardActions>
-                        <TextField 
-                            label="Description" 
-                            sx={{width: "90%", margin: "2%"}}
-                        />
-                    </CardActions>
-                    <CardActions>
-                        <div style={{width: "90%", margin: "2%"}}>
-                            <DatePicker
-                                label="Start Date"
-                                value = {value}
-                                onChange={(startValue) => {
-                                    setValue(startValue);
-                                }}
-                                renderInput={(params) => <TextField {...params} />}
-                            />
-                        </div>
-                    </CardActions>
-                    <CardActions>
-                        <div style={{width: "90%", margin: "2%"}}>
-                            <DatePicker
-                                label="End Date"
-                                value = {otherValue}
-                                onChange={(endValue) => {
-                                    otherSetValue(endValue);
-                                }}
-                                renderInput={(param) => <TextField {...param} />}
-                            />
-                        </div>
-                    </CardActions>
-                    <CardActions>
-                        <Button sx = {{width: "90%", margin: "2%"}}>Add Task</Button>
-                    </CardActions> */}
                 </Popover>
             </div>
     )
