@@ -3,6 +3,7 @@ import { DesktopDatePicker } from "@mui/lab"
 import { useState } from "react"
 import TaskAdder from "./TaskAdder.js"
 import Timeline from "./Timeline.js"
+const date = new Date();
 const Calendar = () => {
     const [lessonsDate, setLessonsDate] = useState(new Date())
     const isDateToday = compareDates(new Date(), lessonsDate);
@@ -64,7 +65,7 @@ const Calendar = () => {
 
             </Grid>
             <Grid item xs={10} marginTop="400px" display="inline-block">
-                <Timeline firstDay={28} month={11} year={2021}/>
+                <Timeline date = {lessonsDate}/>
                 {/* firstDay is the sunday of the week, month and year are self-explanatory */}
             </Grid> 
             <Grid item xs={1}>
